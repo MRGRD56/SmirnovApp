@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SmirnovApp.Model.DbContext
@@ -44,12 +45,14 @@ namespace SmirnovApp.Model.DbContext
         /// <summary>
         /// Вид недвижимости.
         /// </summary>
-        public EstateType Type { get; set; }
+        public virtual EstateType Type { get; set; }
+
+        public int TypeId { get; set; }
 
         /// <summary>
         /// Владелец.
         /// </summary>
-        public Owner Owner { get; set; }
-        public int OwnerId;
+        public virtual Owner Owner { get; set; }
+        public int OwnerId { get; set; }
     }
 }

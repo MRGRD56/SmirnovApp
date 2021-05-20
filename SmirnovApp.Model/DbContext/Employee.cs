@@ -26,8 +26,8 @@ namespace SmirnovApp.Model.DbContext
         /// <summary>
         /// Должность.
         /// </summary>
-        public Position Position { get; set; }
-        public int PositionId;
+        public virtual Position Position { get; set; }
+        public int PositionId { get; set; }
 
         ///// <summary>
         ///// Клиент.

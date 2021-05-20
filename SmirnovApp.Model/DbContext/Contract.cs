@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.Contracts;
 using System.Text;
 
@@ -37,14 +38,14 @@ namespace SmirnovApp.Model.DbContext
         /// <summary>
         /// Клиент.
         /// </summary>
-        public Client Client { get; set; }
-        public int ClientId;
+        public virtual Client Client { get; set; }
+        public int ClientId { get; set; }
 
         /// <summary>
         /// Сотрудник.
         /// </summary>
-        public Employee Employee { get; set; }
-        public int EmployeeId;
+        public virtual Employee Employee { get; set; }
+        public int EmployeeId { get; set; }
 
         ///// <summary>
         ///// Владелец.
@@ -55,13 +56,13 @@ namespace SmirnovApp.Model.DbContext
         /// <summary>
         /// Услуга.
         /// </summary>
-        public Service Service { get; set; }
-        public int ServiceId;
+        public virtual Service Service { get; set; }
+        public int ServiceId { get; set; }
         
         /// <summary>
         /// Имущество.
         /// </summary>
-        public Estate Estate { get; set; }
-        public int? EstateId;
+        public virtual Estate Estate { get; set; }
+        public int EstateId { get; set; }
     }
 }
