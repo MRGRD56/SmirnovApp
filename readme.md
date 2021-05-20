@@ -8,4 +8,4 @@
 #### Запуск *PowerShell*
 *PowerShell* предустановлен в *Windows 10*, способы запуска:
 1. **ПКМ** по пуск, пункт *Windows PowerShell*.
-2. `Win + R` ➡ ввести `powershell.exe`.
+2. `Win + R` → ввести `powershell.exe`.
