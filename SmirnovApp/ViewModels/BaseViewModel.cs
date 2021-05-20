@@ -10,7 +10,7 @@ using SmirnovApp.Model.Annotations;
 
 namespace SmirnovApp.ViewModels
 {
-    public abstract class BaseViewModel : NotifyPropertyChanged
+    public class BaseViewModel : NotifyPropertyChanged
     {
         public Command NavigateCommand => new(o =>
         {
