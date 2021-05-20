@@ -9,6 +9,8 @@ namespace SmirnovApp.Model.DbContext
     /// </summary>
     public class User
     {
+        public int Id { get; set; }
+
         /// <summary>
         /// Логин.
         /// </summary>
