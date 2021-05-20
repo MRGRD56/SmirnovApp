@@ -18,11 +18,22 @@
             </StackPanel.Resources>
 
             <Label Content="Логин"/>
-            <TextBox Style="{DynamicResource PrimaryTextBox}" Name="LoginTextBox"/>
+            <TextBox Style="{DynamicResource PrimaryTextBox}" Text="{Binding Login}" Name="LoginTextBox"/>
             <Label Content="Пароль"/>
-            <PasswordBox Style="{DynamicResource PrimaryTextBox}" Name="PasswordBox"/>
-            <Button Content="ВОЙТИ" HorizontalAlignment="Center" Margin="0 15 0 5" Style="{StaticResource PrimaryButton}"
-                    Command="{Binding }"/>
+            <PasswordBox Style="{DynamicResource PrimaryTextBox}" Name="PasswordBox">
+                <PasswordBox.InputBindings>
+                    <KeyBinding Key="Enter"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=PasswordBox}"/>
+                </PasswordBox.InputBindings>
+            </PasswordBox>
+            <Button Content="{Binding LoginButtonText}" 
+                    HorizontalAlignment="Center" 
+                    Margin="0 15 0 5" 
+                    Style="{StaticResource PrimaryButton}"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=PasswordBox}"
+                    Width="95"/>
         </StackPanel>
     </Grid>
 </Page>

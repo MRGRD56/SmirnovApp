@@ -20,5 +20,7 @@ namespace SmirnovApp.Model.DbContext
         /// Пароль.
         /// </summary>
         public string Password { get; set; }
+
+        public bool HasCredentials(string login, string password) => string.Equals(Login, login) && string.Equals(Password, password);
     }
 }

@@ -14,9 +14,14 @@ namespace SmirnovApp.ViewModels
     {
         public Command NavigateCommand => new(o =>
         {
-            var type = (Type) o;
+            var type = (Type)o;
             Navigation.Navigate(type);
         });
+
+        public Command GoBackCommand => new(_ =>
+        {
+            Navigation.GoBack();
+        }, _ => Navigation.CanGoBack);
 
         public Command ShowDialogWindowCommand => new(o =>
         {

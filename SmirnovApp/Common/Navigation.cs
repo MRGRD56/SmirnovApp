@@ -41,7 +41,7 @@ namespace SmirnovApp.Common
             Navigate(page);
         }
 
-        internal static bool CanGoBack => Frame.CanGoBack;
+        internal static bool CanGoBack => Frame?.CanGoBack == true;
 
         internal static void GoBack()
         {

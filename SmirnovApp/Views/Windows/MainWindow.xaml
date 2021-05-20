@@ -25,7 +25,8 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Content="НАЗАД" Style="{StaticResource OutlineButton}"/>
+                <Button Content="НАЗАД" Style="{StaticResource OutlineButton}"
+                        Command="{Binding GoBackCommand}"/>
             </StackPanel>
         </Grid>
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="Frame" Navigated="OnFrameNavigated"/>
