@@ -22,21 +22,21 @@ namespace SmirnovApp.Model.DbContext
         public string Phone { get; set; }
 
         /// <summary>
-        /// Клиент.
-        /// </summary>
-        public Client Client { get; set; }
-        public int? ClientId;
-
-        /// <summary>
         /// Должность.
         /// </summary>
         public Position Position { get; set; }
-        public int? PositionId;
+        public int PositionId;
 
-        /// <summary>
-        /// Владелец.
-        /// </summary>
-        public Owner Owner { get; set; }
-        public int? OwnerId;
+        ///// <summary>
+        ///// Клиент.
+        ///// </summary>
+        //public Client Client { get; set; }
+        //public int? ClientId;
+
+        ///// <summary>
+        ///// Владелец.
+        ///// </summary>
+        //public Owner Owner { get; set; }
+        //public int? OwnerId;
     }
 }

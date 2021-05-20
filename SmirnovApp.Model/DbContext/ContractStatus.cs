@@ -4,6 +4,9 @@ using System.Text;
 
 namespace SmirnovApp.Model.DbContext
 {
+    /// <summary>
+    /// Статус договора.
+    /// </summary>
     public enum ContractStatus
     {
         /// <summary>

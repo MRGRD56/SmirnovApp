@@ -18,5 +18,7 @@ namespace SmirnovApp.Model.DbContext
         /// Дата обращения.
         /// </summary>
         public DateTime ApplicationDate { get; set; }
+
+        public List<Estate> Estates { get; set; } = new();
     }
 }
