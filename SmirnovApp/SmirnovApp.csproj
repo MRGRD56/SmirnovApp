@@ -11,10 +11,4 @@
     <ProjectReference Include="..\SmirnovApp.Model\SmirnovApp.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Styles\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\Pages\" />
-  </ItemGroup>
-
 </Project>
