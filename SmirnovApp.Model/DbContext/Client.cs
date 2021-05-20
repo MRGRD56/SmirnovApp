@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SmirnovApp.Model.DbContext
@@ -7,6 +8,7 @@ namespace SmirnovApp.Model.DbContext
     /// <summary>
     /// Клиент.
     /// </summary>
+    [Table("Clients")]
     public class Client : Person
     {
         /// <summary>

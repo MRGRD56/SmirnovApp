@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SmirnovApp.Model.DbContext
@@ -8,6 +9,7 @@ namespace SmirnovApp.Model.DbContext
     /// <summary>
     /// Сотрудник.
     /// </summary>
+    [Table("Employees")]
     public class Employee : Person
     {
         /// <summary>

@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmirnovApp.Model\SmirnovApp.Model.csproj" />
+  </ItemGroup>
+
 </Project>
