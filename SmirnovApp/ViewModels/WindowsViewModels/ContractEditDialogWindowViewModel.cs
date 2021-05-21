@@ -50,8 +50,7 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
             Clients = db.Clients.ToList();
             Employees = db.Employees.ToList();
             Estates = db.Estates.ToList();
-
-            //Contract = (Contract) contract?.Clone() ?? new Contract();
+            
             if (contract == null)
             {
                 Contract = new Contract();
@@ -59,6 +58,9 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
             else
             {
                 Contract = (Contract) contract?.Clone();
+                Contract.Client = Clients.Single(x => x.Id == Contract.Client.Id);
+                Contract.Employee = Employees.Single(x => x.Id == Contract.Employee.Id);
+                Contract.Estate = Estates.Single(x => x.Id == Contract.Estate.Id);
             }
         }
 
