@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmirnovApp.Model.DbContext;
+using SmirnovApp.Model.DbModels;
 
 namespace SmirnovApp.Common
 {

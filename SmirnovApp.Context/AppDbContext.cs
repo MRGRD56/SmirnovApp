@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using SmirnovApp.Model.DbContext;
+using SmirnovApp.Model.DbModels;
 
 namespace SmirnovApp.Context
 {

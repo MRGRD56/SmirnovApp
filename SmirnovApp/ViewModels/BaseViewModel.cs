@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 using SmirnovApp.Common;
 using SmirnovApp.Model;
 using SmirnovApp.Model.Annotations;
@@ -23,11 +24,13 @@ namespace SmirnovApp.ViewModels
             Navigation.GoBack();
         }, _ => Navigation.CanGoBack);
 
+        public bool CanGoBack => Navigation.CanGoBack;
+
         public Command ShowDialogWindowCommand => new(o =>
         {
             var type = (Type)o;
             var window = (Window)Activator.CreateInstance(type);
-            window.ShowDialog();
+            window?.ShowDialog();
         });
     }
 }

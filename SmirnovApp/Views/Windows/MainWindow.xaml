@@ -8,12 +8,15 @@
         xmlns:windowsViewModels="clr-namespace:SmirnovApp.ViewModels.WindowsViewModels"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" 
-        Height="450" Width="800"
+        Height="650" Width="1130"
         Style="{StaticResource RootStyle}"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <windowsViewModels:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,7 +29,8 @@
                        HorizontalAlignment="Left"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Content="НАЗАД" Style="{StaticResource OutlineButton}"
-                        Command="{Binding GoBackCommand}"/>
+                        Command="{Binding GoBackCommand}"
+                        Visibility="{Binding CanGoBack, Converter={StaticResource VisibilityConverter}}"/>
             </StackPanel>
         </Grid>
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="Frame" Navigated="OnFrameNavigated"/>

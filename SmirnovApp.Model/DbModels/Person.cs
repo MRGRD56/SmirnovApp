@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SmirnovApp.Model.DbContext
+namespace SmirnovApp.Model.DbModels
 {
     /// <summary>
     /// Человек.
@@ -32,5 +32,7 @@ namespace SmirnovApp.Model.DbContext
         /// </summary>
         [DataType("date")]
         public DateTime BirthDate { get; set; }
+
+        public string FullName => $"{LastName} {FirstName} {Patronymic}";
     }
 }

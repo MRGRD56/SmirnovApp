@@ -10,7 +10,7 @@ namespace SmirnovApp.Common
 {
     internal static class Navigation
     {
-        private static Frame Frame => App.MainWindow.Frame;
+        public static Frame Frame => App.MainWindow.Frame;
 
         /// <summary>
         /// Осуществляет навигацию к объекту <paramref name="page"/>.

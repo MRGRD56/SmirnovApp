@@ -23,19 +23,14 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
             }
         }
 
-        //public event NavigatedEventHandler Navigated;
-
-        //public MainWindowViewModel()
-        //{
-        //    Navigated += OnNavigated;
-        //}
-
         public void OnNavigated(object sender, NavigationEventArgs e)
         {
             if (e.Content is Page page)
             {
                 WindowTitle = page.Title;
             }
+
+            OnPropertyChanged(nameof(CanGoBack));
         }
     }
 }

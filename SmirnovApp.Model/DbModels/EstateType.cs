@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SmirnovApp.Model.DbContext
+namespace SmirnovApp.Model.DbModels
 {
     /// <summary>
-    /// Услуга.
+    /// Вид недвижимости.
     /// </summary>
-    public class Service
+    public class EstateType
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        [DataType("money")]
-        public decimal Cost { get; set; }
     }
 }

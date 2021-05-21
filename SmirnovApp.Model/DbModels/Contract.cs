@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.Contracts;
 using System.Text;
 
-namespace SmirnovApp.Model.DbContext
+namespace SmirnovApp.Model.DbModels
 {
     /// <summary>
     /// Договор.

@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using Microsoft.EntityFrameworkCore;
 using SmirnovApp.Common;
 using SmirnovApp.Context;
-using SmirnovApp.Model.DbContext;
+using SmirnovApp.Model.DbModels;
 using SmirnovApp.Views.Pages;
 
 namespace SmirnovApp.ViewModels.PagesViewModels

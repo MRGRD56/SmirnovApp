@@ -6,11 +6,21 @@
       xmlns:local="clr-namespace:SmirnovApp.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Style="{StaticResource RootStyle}"
       Title="Сотрудники">
 
     <Grid>
-        <DataGrid ItemsSource="{Binding Items}">
-
+        <DataGrid ItemsSource="{Binding Items}" Style="{StaticResource ReadonlyDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, ConverterCulture=ru-RU, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Зарплата" Binding="{Binding Salary, StringFormat={}{0:C}, ConverterCulture=ru-RU}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Position.Name}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Page>

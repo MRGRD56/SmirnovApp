@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmirnovApp.Model.DbContext
+namespace SmirnovApp.Model.DbModels
 {
     /// <summary>
     /// Пользователь системы.

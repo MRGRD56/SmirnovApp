@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SmirnovApp.Model.DbModels;
-using SmirnovApp.ViewModels.PagesViewModels;
 
-namespace SmirnovApp.Views.Pages
+namespace SmirnovApp.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for EmployeesPage.xaml
+    /// Interaction logic for ContractEditDialogWindow.xaml
     /// </summary>
-    public partial class EmployeesPage : Page
+    public partial class ContractEditDialogWindow : Window
     {
-        public EmployeesPage()
+        public ContractEditDialogWindow()
         {
             InitializeComponent();
-            DataContext = new ItemsListViewModel<Employee>(typeof(Position));
         }
     }
 }
