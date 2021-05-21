@@ -39,6 +39,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -100,6 +101,11 @@
                       SelectedItem="{Binding Contract.Estate}"
                       DisplayMemberPath="Address"
                       ItemsSource="{Binding Estates}"/>
+            <Label Grid.Row="8" Grid.Column="0" Content="Услуга"/>
+            <ComboBox Grid.Row="8" Grid.Column="1" 
+                      SelectedItem="{Binding Contract.Service}"
+                      DisplayMemberPath="Name"
+                      ItemsSource="{Binding Services}"/>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"
                     Margin="0 20">

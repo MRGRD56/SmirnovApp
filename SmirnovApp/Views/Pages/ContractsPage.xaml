@@ -56,37 +56,49 @@
             </Grid>-->
             <StackPanel Grid.Row="0">
                 <!--<Label Content="Поиск" Style="{StaticResource FormLabel}" HorizontalContentAlignment="Center"/>-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="3"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="3"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="3"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="3"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="Label" BasedOn="{StaticResource FormLabel}">
-                            <Setter Property="HorizontalContentAlignment" Value="Right"/>
-                        </Style>
-                        <Style TargetType="TextBox" BasedOn="{StaticResource PrimaryTextBox}"></Style>
-                    </Grid.Resources>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Название договора"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="ФИО сотрудника"/>
-                    <Label Grid.Row="4" Grid.Column="0" Content="ФИО клиента"/>
-                    <Label Grid.Row="6" Grid.Column="0" Content="ФИО владельца"/>
+                <GroupBox Header="Поиск">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Style="{StaticResource FormLabel}"/>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="3 0 3 3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="3"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="Label" BasedOn="{StaticResource FormLabel}">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource PrimaryTextBox}"></Style>
+                        </Grid.Resources>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Название договора"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="ФИО сотрудника"/>
+                        <Label Grid.Row="4" Grid.Column="0" Content="ФИО клиента"/>
+                        <Label Grid.Row="6" Grid.Column="0" Content="ФИО владельца"/>
 
-                    <TextBox Grid.Row="0" Grid.Column="2" />
-                    <TextBox Grid.Row="2" Grid.Column="2" />
-                    <TextBox Grid.Row="4" Grid.Column="2" />
-                    <TextBox Grid.Row="6" Grid.Column="2" />
-                </Grid>
+                        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding ContractNameSearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding EmployeeSearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding OwnerSearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Grid.Row="8" Grid.ColumnSpan="3" HorizontalAlignment="Right" Content="СБРОСИТЬ" Style="{StaticResource OutlineButton}"
+                                Command="{Binding ResetFilterCommand}"/>
+                    </Grid>
+                </GroupBox>
             </StackPanel>
             <Grid Grid.Row="1" Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
@@ -125,7 +137,8 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid Style="{StaticResource ReadonlyDataGrid}" ItemsSource="{Binding Items}"
+            <DataGrid Style="{StaticResource ReadonlyDataGrid}" 
+                      ItemsSource="{Binding ContractsView}"
                       SelectedItem="{Binding SelectedContract}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="№" Binding="{Binding Id}"/>

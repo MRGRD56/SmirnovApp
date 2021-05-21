@@ -21,6 +21,10 @@ namespace SmirnovApp.Views.Windows
     /// </summary>
     public partial class ContractEditDialogWindow : Window
     {
+        private ContractEditDialogWindowViewModel ViewModel => (ContractEditDialogWindowViewModel)DataContext;
+
+        public Contract Contract => ViewModel.Contract;
+
         public ContractEditDialogWindow()
         {
             InitializeComponent();

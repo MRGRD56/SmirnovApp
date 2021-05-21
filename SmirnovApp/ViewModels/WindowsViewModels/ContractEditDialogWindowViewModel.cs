@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using SmirnovApp.Common;
 using SmirnovApp.Context;
@@ -26,6 +27,7 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
         public List<Client> Clients { get; set; }
         public List<Employee> Employees { get; set; }
         public List<Estate> Estates { get; set; }
+        public List<Service> Services { get; set; }
 
         public ContractEditDialogWindowViewModel()
         {
@@ -50,6 +52,7 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
             Clients = db.Clients.ToList();
             Employees = db.Employees.ToList();
             Estates = db.Estates.ToList();
+            Services = db.Services.ToList();
             
             if (contract == null)
             {
@@ -61,12 +64,50 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
                 Contract.Client = Clients.Single(x => x.Id == Contract.Client.Id);
                 Contract.Employee = Employees.Single(x => x.Id == Contract.Employee.Id);
                 Contract.Estate = Estates.Single(x => x.Id == Contract.Estate.Id);
+                Contract.Service = Services.Single(x => x.Id == Contract.Service.Id);
             }
         }
 
         public Command OkCommand => new(o =>
         {
             var window = (ContractEditDialogWindow) o;
+
+            var errors = new List<string>();
+            if (string.IsNullOrWhiteSpace(Contract.Name))
+            {
+                errors.Add("Название договора");
+            }
+            if (Contract.Amount == default)
+            {
+                errors.Add("Сумма");
+            }
+            if (Contract.Date == default)
+            {
+                errors.Add("Дата договора");
+            }
+            if (Contract.Client == null)
+            {
+                errors.Add("Клиент");
+            }
+            if (Contract.Employee == null)
+            {
+                errors.Add("Сотрудник");
+            }
+            if (Contract.Estate == null)
+            {
+                errors.Add("Имущество");
+            }
+            if (Contract.Service == null)
+            {
+                errors.Add("Услуга");
+            }
+
+            if (errors.Any())
+            {
+                var errorsText = $"Следующие поля не заполнены:\n{string.Join(";\n", errors.Select(x => $"• {x}"))}.";
+                MessageBox.Show(errorsText, "Не все поля заполнены", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             window.DialogResult = true;
             window.Close();
