@@ -4,16 +4,91 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmirnovApp.Views.Windows"
+        xmlns:windowsViewModels="clr-namespace:SmirnovApp.ViewModels.WindowsViewModels"
         mc:Ignorable="d"
         Style="{StaticResource RootStyle}"
-        Title="Договор" Height="600" Width="400">
-    <Grid Margin="5 10">
+        Title="{Binding WindowTitle}" 
+        Height="500" Width="400">
+    <d:Window.DataContext>
+        <windowsViewModels:ContractEditDialogWindowViewModel/>
+    </d:Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </Window.Resources>
+    <Grid Margin="5 0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="ОК" Margin="0 0 10 0" 
+        <TextBlock Grid.Row="0"
+                   Margin="10"
+                   Text="{Binding WindowTitle}"
+                   Style="{StaticResource Heading4}"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Label" BasedOn="{StaticResource FormLabel}">
+                    <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                    <Setter Property="Margin" Value="0 0 5 0"/>
+                </Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource PrimaryTextBox}">
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="ComboBox">
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="DatePicker">
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+            </Grid.Resources>
+            <Label Grid.Row="0" Grid.Column="0" Content="Номер" 
+                   Visibility="{Binding IsEdit, Converter={StaticResource VisibilityConverter}}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" 
+                     Text="{Binding Contract.Id}" IsReadOnly="True"
+                     Visibility="{Binding IsEdit, Converter={StaticResource VisibilityConverter}}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Название"/>
+            <TextBox Grid.Row="1" Grid.Column="1" 
+                     Text="{Binding Contract.Name}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Сумма"/>
+            <TextBox Grid.Row="2" Grid.Column="1" 
+                     Text="{Binding Contract.Amount}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Дата"/>
+            <DatePicker Grid.Row="3" Grid.Column="1" 
+                        SelectedDate="{Binding Contract.Date}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Статус"/>
+            <ComboBox Grid.Row="4" Grid.Column="1" 
+                      SelectedItem="{Binding Contract.Status}"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Клиент"/>
+            <ComboBox Grid.Row="5" Grid.Column="1" 
+                      SelectedItem="{Binding Contract.Client}"
+                      DisplayMemberPath="FullName"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="Сотрудник"/>
+            <ComboBox Grid.Row="6" Grid.Column="1" 
+                      SelectedItem="{Binding Contract.Employee}"
+                      DisplayMemberPath="FullName"/>
+            <Label Grid.Row="7" Grid.Column="0" Content="Имущество"/>
+            <ComboBox Grid.Row="7" Grid.Column="1" 
+                      SelectedItem="{Binding Contract.Estate}"
+                      DisplayMemberPath="FullName"/>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"
+                    Margin="0 20">
+            <Button Content="ОК" Margin="0 0 10 0"
                     Style="{StaticResource PrimaryButton}" 
                     Width="90"/>
             <Button Content="Отмена" Style="{StaticResource SecondaryButton}"

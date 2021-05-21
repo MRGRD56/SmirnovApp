@@ -10,7 +10,7 @@ namespace SmirnovApp.Model.DbModels
     /// <summary>
     /// Договор.
     /// </summary>
-    public class Contract
+    public class Contract : ICloneable
     {
         public int Id { get; set; }
 
@@ -64,5 +64,25 @@ namespace SmirnovApp.Model.DbModels
         /// </summary>
         public virtual Estate Estate { get; set; }
         public int EstateId { get; set; }
+
+        public object Clone()
+        {
+            return new Contract
+            {
+                Id = Id,
+                Name = Name,
+                Amount = Amount,
+                Date = Date,
+                Status = Status,
+                Client = Client,
+                ClientId = ClientId,
+                Employee = Employee,
+                EmployeeId = EmployeeId,
+                Service = Service,
+                ServiceId = ServiceId,
+                Estate = Estate,
+                EstateId = EstateId
+            };
+        }
     }
 }
