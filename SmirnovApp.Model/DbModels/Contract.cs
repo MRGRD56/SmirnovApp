@@ -28,7 +28,7 @@ namespace SmirnovApp.Model.DbModels
         /// <summary>
         /// Дата сделки.
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         /// <summary>
         /// Статус договора.

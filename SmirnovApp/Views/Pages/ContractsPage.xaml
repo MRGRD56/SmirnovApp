@@ -99,13 +99,13 @@
                             <Setter Property="Margin" Value="0 0 3 0"/>
                         </Style>
                     </StackPanel.Resources>
-                    <Button ToolTip="Добавить">
+                    <Button ToolTip="Добавить" Command="{Binding AddCommand}">
                         <Image Source="/Resources/Icons/baseline_add_black_24dp.png" />
                     </Button>
-                    <Button ToolTip="Редактировать выбранный">
+                    <Button ToolTip="Редактировать выбранный" Command="{Binding EditCommand}">
                         <Image Source="/Resources/Icons/baseline_edit_black_24dp.png" />
                     </Button>
-                    <Button ToolTip="Удалить выбранный">
+                    <Button ToolTip="Удалить выбранный" Command="{Binding RemoveCommand}">
                         <Image Source="/Resources/Icons/baseline_delete_black_24dp.png" />
                     </Button>
                 </StackPanel>
@@ -115,17 +115,18 @@
                             <Setter Property="Margin" Value="3 0 0 0"/>
                         </Style>
                     </StackPanel.Resources>
-                    <Button ToolTip="Получить документ на печать для выбранного договора">
+                    <Button ToolTip="Получить документ на печать для выбранного договора" Command="{Binding CreateDocumentCommand}">
                         <Image Source="/Resources/Icons/baseline_print_black_24dp.png" />
                     </Button>
-                    <Button ToolTip="Экспортировать данные о договорах">
+                    <Button ToolTip="Экспортировать данные о договорах" Command="{Binding ExportAllCommand}">
                         <Image Source="/Resources/Icons/baseline_file_upload_black_24dp.png" />
                     </Button>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid Style="{StaticResource ReadonlyDataGrid}" ItemsSource="{Binding Items}">
+            <DataGrid Style="{StaticResource ReadonlyDataGrid}" ItemsSource="{Binding Items}"
+                      SelectedItem="{Binding SelectedContract}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>

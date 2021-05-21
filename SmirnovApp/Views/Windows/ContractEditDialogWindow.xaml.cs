@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SmirnovApp.Model.DbModels;
+using SmirnovApp.ViewModels.WindowsViewModels;
 
 namespace SmirnovApp.Views.Windows
 {
@@ -22,6 +24,13 @@ namespace SmirnovApp.Views.Windows
         public ContractEditDialogWindow()
         {
             InitializeComponent();
+            DataContext = new ContractEditDialogWindowViewModel();
+        }
+
+        public ContractEditDialogWindow(Contract contract)
+        {
+            InitializeComponent();
+            DataContext = new ContractEditDialogWindowViewModel(contract);
         }
     }
 }
