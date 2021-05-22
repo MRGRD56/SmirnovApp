@@ -295,7 +295,20 @@ namespace SmirnovApp.ViewModels.PagesViewModels
 
             var document = new XWPFDocument(templateStream);
 
-            document.ReplaceText("@CurrentDateYear", DateTime.Now.Year.ToString());
+            var replaces = new List<(string From, string To)>
+            {
+                ("CurrentDateYear", DateTime.Now.Year.ToString()),
+                ("OwnerFullName", SelectedContract.Estate.Owner.FullName),
+                ("ClientFullName", SelectedContract.Client.FullName),
+                ("EstateAddress", SelectedContract.Estate.Address),
+                ("EstateEffectiveArea", SelectedContract.Estate.Area.ToString()),
+                ("EstateLivingArea", SelectedContract.Estate.Area.ToString()),
+                ("EstateCost", SelectedContract.Estate.Cost.ToString()),
+                ("OwnerPhone", SelectedContract.Estate.Owner.Phone),
+                ("ClientPhone", SelectedContract.Estate.Owner.Phone),
+            };
+
+            replaces.ForEach(x => document.ReplaceText(x.From, x.To));
 
             using (var fileStream = new FileStream(fileName, FileMode.Create))
             {
