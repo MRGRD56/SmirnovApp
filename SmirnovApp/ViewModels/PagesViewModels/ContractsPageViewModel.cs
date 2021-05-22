@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using Microsoft.Win32;
+using NPOI.OpenXmlFormats.Wordprocessing;
+using NPOI.XWPF.UserModel;
 using SmirnovApp.Common;
 using SmirnovApp.Context;
+using SmirnovApp.Converters;
 using SmirnovApp.Extensions;
 using SmirnovApp.Model.DbModels;
 using SmirnovApp.Views.Windows;
@@ -139,7 +146,12 @@ namespace SmirnovApp.ViewModels.PagesViewModels
 
         public Command ExportAllCommand => new(_ =>
         {
+            var fileName = $"Договоры_{DateTime.Now:yyyy-MM-ddTHH-mm-ss}.docx";
 
+            fileName = GetPathToSaveFile("*.docx|*.docx", fileName);
+            if (fileName == null) return;
+
+            SaveContractsTableToDocx(fileName);
         });
 
         public Command ResetFilterCommand => new(_ => 
@@ -149,5 +161,114 @@ namespace SmirnovApp.ViewModels.PagesViewModels
             ClientSearchQuery = "";
             OwnerSearchQuery = "";
         });
+
+        /// <summary>
+        /// Получает путь для сохранения файла путём открытия <see cref="SaveFileDialog"/>.
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        private string GetPathToSaveFile(string filter, string fileName = null)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.Filter = filter;
+            if (fileName != null)
+            {
+                saveFileDialog.FileName = fileName;
+            }
+            var dialogResult = saveFileDialog.ShowDialog();
+
+            return dialogResult == true ? saveFileDialog.FileName : null;
+        }
+
+        /// <summary>
+        /// Сохраняет таблицу с договорами в DOCX-документ.
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void SaveContractsTableToDocx(string fileName)
+        {
+            var document = new XWPFDocument();
+            const ulong documentMargin = 200;
+            //Задаём настройки документа.
+            document.Document.body.sectPr = new CT_SectPr 
+            {
+                //Устанавливаем отступы от краёв.
+                pgMar = new CT_PageMar
+                {
+                    header = documentMargin,
+                    right = documentMargin,
+                    footer = documentMargin,
+                    left = documentMargin,
+                    top = documentMargin.ToString(),
+                    bottom = documentMargin.ToString(),
+                    gutter = 0
+                }
+            };
+            var paragraph = document.CreateParagraph();
+            var titleRun = paragraph.CreateRun();
+            titleRun.SetText($"Отчёт по договорам {DateTime.Now:dd.MM.yyyy}");
+            titleRun.FontSize = 18;
+
+            var titles = new List<string>
+            {
+                "№", "Название", "Сумма", "Дата", "Статус", "Клиент", "Сотрудник", "Владелец", "Имущество"
+            };
+
+            var rows = Items.Count + 1;
+            var cols = titles.Count;
+            var table = document.CreateTable(rows, cols);
+            //Устанавливаем отступы для каждой ячейки таблицы.
+            table.SetCellMargins(50, 50, 50, 50);
+
+            //Добавляем заголовки столбцов.
+            for (int colIndex = 0; colIndex < cols; colIndex++)
+            {
+                var cell = table.GetRow(0).GetCell(colIndex);
+                cell.SetText(titles[colIndex]);
+            }
+
+            //Заполняем данные.
+            for (int rowIndex = 1; rowIndex < rows; rowIndex++)
+            {
+                //Текущая строка.
+                var row = table.GetRow(rowIndex);
+
+                //Договор, соответствующий текущей строке.
+                var contract = Items[rowIndex - 1];
+
+                //Данные, которыми будут заполнены ячейки строки. Индекс элемента соответствует индексу ячейки в строке.
+                var rowData = new List<string>
+                {
+                    contract.Id.ToString(),
+                    contract.Name,
+                    contract.Amount.ToString("C"),
+                    contract.Date.ToString("dd.MM.yyyy"),
+                    ContractStatusConverter.GetString(contract.Status),
+                    contract.Client.FullName,
+                    contract.Employee.FullName,
+                    contract.Estate.Owner.FullName,
+                    contract.Estate.Address
+                };
+
+                //Заполняем ячейки строки данными.
+                for (int colIndex = 0; colIndex < cols; colIndex++)
+                {
+                    var cell = row.GetCell(colIndex);
+                    cell.SetText(rowData[colIndex]);
+                }
+            }
+
+            //Сохраняем в файл.
+            using (var stream = new FileStream(fileName, FileMode.Create)) 
+            {
+                document.Write(stream);
+            }
+
+            //Открываем проводник с выделением на созданном файле.
+            Process.Start("explorer.exe", $"/select,\"{fileName}\"");
+            //Также, мы можем открыть сразу сам файл:
+            //Process.Start(fileName);
+        }
     }
 }

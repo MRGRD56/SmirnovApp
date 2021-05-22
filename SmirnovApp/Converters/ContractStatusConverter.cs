@@ -18,10 +18,12 @@ namespace SmirnovApp.Converters
             {ContractStatus.Terminated, "Расторгнут"}
         };
 
+        public static string GetString(ContractStatus contractStatus) => _enumValues?[contractStatus];
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var enumValue = (ContractStatus) value;
-            return _enumValues?[enumValue];
+            return GetString(enumValue);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

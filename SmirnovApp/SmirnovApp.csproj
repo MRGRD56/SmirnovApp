@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SmirnovApp.Context\SmirnovApp.Context.csproj" />
     <ProjectReference Include="..\SmirnovApp.Model\SmirnovApp.Model.csproj" />
   </ItemGroup>
