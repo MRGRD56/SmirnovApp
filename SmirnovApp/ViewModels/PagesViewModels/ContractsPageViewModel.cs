@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -139,11 +140,22 @@ namespace SmirnovApp.ViewModels.PagesViewModels
             await db.SaveChangesAsync();
         }, _ => SelectedContract != null);
 
+        /// <summary>
+        /// Создание документа по выбранному договору.
+        /// </summary>
         public Command CreateDocumentCommand => new(_ =>
         {
+            var fileName = $"{SelectedContract.Name.Replace(" ", "_")}_{DateTime.Now:yyyy-MM-ddTHH-mm-ss}.docx";
 
+            fileName = GetPathToSaveFile("*.docx|*.docx", fileName);
+            if (fileName == null) return;
+
+            SaveContractDocumentToDocx(fileName);
         }, _ => SelectedContract != null);
 
+        /// <summary>
+        /// Экспорт таблицы всех договоров в DOCX.
+        /// </summary>
         public Command ExportAllCommand => new(_ =>
         {
             var fileName = $"Договоры_{DateTime.Now:yyyy-MM-ddTHH-mm-ss}.docx";
@@ -269,6 +281,28 @@ namespace SmirnovApp.ViewModels.PagesViewModels
             Process.Start("explorer.exe", $"/select,\"{fileName}\"");
             //Также, мы можем открыть сразу сам файл:
             //Process.Start(fileName);
+        }
+
+        /// <summary>
+        /// Сохраняет документ по текущему договору.
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void SaveContractDocumentToDocx(string fileName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            const string templateResourceName = "SmirnovApp.Resources.Templates.ContractTemplate.docx";
+            using var templateStream = assembly.GetManifestResourceStream(templateResourceName);
+
+            var document = new XWPFDocument(templateStream);
+
+            document.ReplaceText("@CurrentDateYear", DateTime.Now.Year.ToString());
+
+            using (var fileStream = new FileStream(fileName, FileMode.Create))
+            {
+                document.Write(fileStream);
+            }
+
+            Process.Start("explorer.exe", $"/select,\"{fileName}\"");
         }
     }
 }

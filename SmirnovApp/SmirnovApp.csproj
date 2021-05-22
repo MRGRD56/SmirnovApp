@@ -13,6 +13,11 @@
     <None Remove="Resources\Icons\baseline_edit_black_24dp.png" />
     <None Remove="Resources\Icons\baseline_file_upload_black_24dp.png" />
     <None Remove="Resources\Icons\baseline_print_black_24dp.png" />
+    <None Remove="Resources\Templates\ContractTemplate.docx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\ContractTemplate.docx" />
   </ItemGroup>
 
   <ItemGroup>
