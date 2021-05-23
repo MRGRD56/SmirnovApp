@@ -74,7 +74,13 @@ namespace SmirnovApp
                     Patronymic = "Петрович",
                     BirthDate = DateTime.Parse("1994-11-21"),
                     Phone = "+79123214152",
-                    ApplicationDate = DateTime.Now.AddDays(-2)
+                    ApplicationDate = DateTime.Now.AddDays(-2),
+                    LivingAddress = "Россия, г. Батайск, Коммунистическая ул., д. 20 кв.203",
+                    RegistrationAddress = "Россия, г. Щёлково, Железнодорожная ул., д. 10 кв.15",
+                    PassportSeries = "4780",
+                    PassportNumber = "342513",
+                    PassportIssueDate = DateTime.Parse("2002-12-17"),
+                    PassportIssuedBy = "Отделом УФМС России по г. Батайск"
                 },
                 new()
                 {
@@ -83,7 +89,13 @@ namespace SmirnovApp
                     Patronymic = "Викторовна",
                     BirthDate = DateTime.Parse("1997-01-17"),
                     Phone = "+79123523625",
-                    ApplicationDate = DateTime.Now.AddDays(-14)
+                    ApplicationDate = DateTime.Now.AddDays(-14),
+                    LivingAddress = "Россия, г. Королёв, Центральная ул., д. 23 кв.101",
+                    RegistrationAddress = "Россия, г. Иркутск, Тихая ул., д. 5 кв.211",
+                    PassportSeries = "4391",
+                    PassportNumber = "840271",
+                    PassportIssueDate = DateTime.Parse("2003-11-09"),
+                    PassportIssuedBy = "ОУФМС России по г. Королёв"
                 },
                 new()
                 {
@@ -92,7 +104,13 @@ namespace SmirnovApp
                     Patronymic = "Николаевич",
                     BirthDate = DateTime.Parse("1985-08-01"),
                     Phone = "+79178721461",
-                    ApplicationDate = DateTime.Now.AddDays(-5)
+                    ApplicationDate = DateTime.Now.AddDays(-5),
+                    LivingAddress = "Россия, г. Саратов, Речная ул., д. 19 кв.130",
+                    RegistrationAddress = "Россия, г. Ковров, Школьный пер., д. 25 кв.74",
+                    PassportSeries = "2156",
+                    PassportNumber = "272357",
+                    PassportIssueDate = DateTime.Parse("1983-10-12"),
+                    PassportIssuedBy = "Отделением УФМС России по г. Саратов",
                 }
             };
             db.Owners.AddRange(owners);
@@ -105,7 +123,13 @@ namespace SmirnovApp
                     FirstName = "Данила",
                     Patronymic = "Владимирович",
                     BirthDate = DateTime.Parse("2000-12-08"),
-                    ApplicationDate = DateTime.Now.AddDays(-4)
+                    ApplicationDate = DateTime.Now.AddDays(-4),
+                    LivingAddress = "Россия, г. Сочи, Белорусская ул., д. 6 кв.34",
+                    RegistrationAddress = "Россия, г. Мытищи, Севернаяул., д. 6 кв.27",
+                    PassportSeries = "4597",
+                    PassportNumber = "953586",
+                    PassportIssueDate = DateTime.Parse("2004-01-22"),
+                    PassportIssuedBy = "Отделением УФМС России по г. Сочи"
                 },
                 new()
                 {
@@ -113,7 +137,13 @@ namespace SmirnovApp
                     FirstName = "Сергей",
                     Patronymic = "Сергеевич",
                     BirthDate = DateTime.Parse("2000-04-04"),
-                    ApplicationDate = DateTime.Now.AddDays(-1)
+                    ApplicationDate = DateTime.Now.AddDays(-1),
+                    LivingAddress = "Россия, г. Элиста, Космонавтов ул., д. 15 кв.39",
+                    RegistrationAddress = "Россия, г. Нижневартовск, Пионерская ул., д. 10 кв.79",
+                    PassportSeries = "4378",
+                    PassportNumber = "449572",
+                    PassportIssueDate = DateTime.Parse("2008-11-24"),
+                    PassportIssuedBy = "Отделением УФМС России по г. Элиста"
                 },
                 new()
                 {
@@ -121,7 +151,13 @@ namespace SmirnovApp
                     FirstName = "Ольга",
                     Patronymic = "Сергеевна",
                     BirthDate = DateTime.Parse("1989-07-28"),
-                    ApplicationDate = DateTime.Now.AddDays(-40)
+                    ApplicationDate = DateTime.Now.AddDays(-40),
+                    LivingAddress = "Россия, г. Махачкала, Победы ул., д. 22 кв.159",
+                    RegistrationAddress = "Россия, г. Самара, Восточная ул., д. 8 кв.183",
+                    PassportSeries = "4590",
+                    PassportNumber = "112174",
+                    PassportIssueDate = DateTime.Parse("2011-10-05"),
+                    PassportIssuedBy = "ОВД России по г. Махачкала"
                 }
             };
             db.Clients.AddRange(clients);
@@ -136,7 +172,13 @@ namespace SmirnovApp
                     BirthDate = DateTime.Parse("1978-03-08"),
                     Phone = "+73214242936",
                     Position = positions[0],
-                    Salary = 100500
+                    Salary = 100500,
+                    LivingAddress = "Россия, г. Арзамас, Интернациональная ул., д. 16 кв.189",
+                    RegistrationAddress = "Россия, г. Омск, Спортивная ул., д. 21 кв.173",
+                    PassportSeries = "4476",
+                    PassportNumber = "188380",
+                    PassportIssueDate = DateTime.Parse("2007-02-15"),
+                    PassportIssuedBy = "Отделением УФМС России по г. Арзамас"
                 },
                 new()
                 {
@@ -146,17 +188,29 @@ namespace SmirnovApp
                     BirthDate = DateTime.Parse("1988-09-21"),
                     Phone = "+793475629534",
                     Position = positions[0],
-                    Salary = 86000
+                    Salary = 86000,
+                    LivingAddress = "Россия, г. Дербент, Пролетарская ул., д. 13 кв.88",
+                    RegistrationAddress = "Россия, г. Стерлитамак, Дружная ул., д. 10 кв.203",
+                    PassportSeries = "4477",
+                    PassportNumber = "534579",
+                    PassportIssueDate = DateTime.Parse("2016-03-03"),
+                    PassportIssuedBy = "Управление внутренних дел по г. Дербент"
                 },
                 new()
                 {
                     LastName = "Соколов",
                     FirstName = "Дмитрий",
                     Patronymic = "Артёмович",
-                    BirthDate = DateTime.Parse("1999-12-08"),
-                    Phone = "+732142124124",
+                    BirthDate = DateTime.Parse("2013-01-30"),
+                    Phone = "+7 (970) 981-34-41",
                     Position = positions[1],
-                    Salary = 19000
+                    Salary = 19000,
+                    LivingAddress = "Россия, г. Грозный, Луговой пер., д. 1 кв.186",
+                    RegistrationAddress = "Россия, г. Каменск - Уральский, Ленина ул., д. 16 кв.181",
+                    PassportSeries = "4931",
+                    PassportNumber = "763979",
+                    PassportIssueDate = DateTime.Parse("HELLO"),
+                    PassportIssuedBy = "ОВД России по г. Грозный"
                 }
             };
             db.Employees.AddRange(employees);
@@ -183,7 +237,7 @@ namespace SmirnovApp
                 new()
                 {
                     Name = "Кстати, независимые государства",
-                    Address = "А также диаграммы связей подвергнуты",
+                    Address = "Россия, г. Брянск, Почтовая ул., д. 7 кв.97",
                     Area = 120,
                     Cost = 4_000_000,
                     FloorsCount = 1,
@@ -194,7 +248,7 @@ namespace SmirnovApp
                 new()
                 {
                     Name = "Учитывая ключевые сценарии поведения",
-                    Address = "Современные технологии достигли такого",
+                    Address = "Россия, г. Сочи, Дорожная ул., д. 17 кв.210",
                     Area = 80,
                     Cost = 2_200_000,
                     FloorsCount = 20,
@@ -205,7 +259,7 @@ namespace SmirnovApp
                 new()
                 {
                     Name = "Банальные, но неопровержимые выводы",
-                    Address = "Но укрепление и развитие внутренней",
+                    Address = "Россия, г. Хабаровск, Заречная ул., д. 24 кв.178",
                     Area = 150,
                     Cost = 14_000_000,
                     FloorsCount = 16,
@@ -274,7 +328,7 @@ namespace SmirnovApp
 
         public App()
         {
-            FillDatabase(force: false, drop: false);
+            FillDatabase(force: false, drop: true);
         }
     }
 }

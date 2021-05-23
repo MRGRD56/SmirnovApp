@@ -33,6 +33,49 @@ namespace SmirnovApp.Model.DbModels
         [DataType("date")]
         public DateTime BirthDate { get; set; }
 
+        /// <summary>
+        /// ФИО.
+        /// </summary>
         public string FullName => $"{LastName} {FirstName} {Patronymic}";
+
+        /// <summary>
+        /// Серия паспорта.
+        /// </summary>
+        public string PassportSeries { get; set; }
+
+        /// <summary>
+        /// Номер паспорта.
+        /// </summary>
+        public string PassportNumber { get; set; }
+
+        /// <summary>
+        /// Серия и номер паспорта.
+        /// </summary>
+        public string PassportFullNumber => $"{PassportSeries} {PassportFullNumber}";
+
+        /// <summary>
+        /// Кем выдан.
+        /// </summary>
+        public string PassportIssuedBy { get; set; }
+
+        /// <summary>
+        /// Когда выдан.
+        /// </summary>
+        public DateTime PassportIssueDate { get; set; }
+
+        /// <summary>
+        /// Дата выдачи и кем выдан.
+        /// </summary>
+        public string PassportIssued => $"{PassportIssueDate:dd.MM.yyyy}, {PassportIssuedBy}";
+
+        /// <summary>
+        /// Адрес проживания.
+        /// </summary>
+        public string LivingAddress { get; set; }
+
+        /// <summary>
+        /// Адрес регистрации.
+        /// </summary>
+        public string RegistrationAddress { get; set; }
     }
 }
