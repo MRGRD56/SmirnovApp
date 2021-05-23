@@ -209,7 +209,7 @@ namespace SmirnovApp
                     RegistrationAddress = "Россия, г. Каменск - Уральский, Ленина ул., д. 16 кв.181",
                     PassportSeries = "4931",
                     PassportNumber = "763979",
-                    PassportIssueDate = DateTime.Parse("HELLO"),
+                    PassportIssueDate = DateTime.Parse("2012-10-07"),
                     PassportIssuedBy = "ОВД России по г. Грозный"
                 }
             };
@@ -328,7 +328,7 @@ namespace SmirnovApp
 
         public App()
         {
-            FillDatabase(force: false, drop: true);
+            FillDatabase(force: false, drop: false);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace SmirnovApp.Model.DbModels
         /// <summary>
         /// Серия и номер паспорта.
         /// </summary>
-        public string PassportFullNumber => $"{PassportSeries} {PassportFullNumber}";
+        public string PassportFullNumber => $"{PassportSeries} {PassportNumber}";
 
         /// <summary>
         /// Кем выдан.

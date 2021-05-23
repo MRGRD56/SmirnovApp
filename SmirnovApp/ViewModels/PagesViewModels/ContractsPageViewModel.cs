@@ -301,12 +301,12 @@ namespace SmirnovApp.ViewModels.PagesViewModels
                 ("OwnerFullName", SelectedContract.Estate.Owner.FullName),
                 ("OwnerPassportSeries", SelectedContract.Estate.Owner.PassportSeries),
                 ("OwnerPassportNumber", SelectedContract.Estate.Owner.PassportNumber),
-                ("OwnerPassportIssued", SelectedContract.Estate.Owner.PassportIssued),
+                ("OwnerPassportIssuedInfo", SelectedContract.Estate.Owner.PassportIssued),
                 ("OwnerLivingAddress", SelectedContract.Estate.Owner.LivingAddress),
                 ("ClientFullName", SelectedContract.Client.FullName),
                 ("ClientPassportSeries", SelectedContract.Client.PassportSeries),
                 ("ClientPassportNumber", SelectedContract.Client.PassportNumber),
-                ("ClientPassportIssued", SelectedContract.Client.PassportIssued),
+                ("ClientPassportIssuedInfo", SelectedContract.Client.PassportIssued),
                 ("ClientLivingAddress", SelectedContract.Client.LivingAddress),
                 ("EstateAddress", SelectedContract.Estate.Address),
                 ("EstateEffectiveArea", SelectedContract.Estate.Area.ToString()),
@@ -327,6 +327,7 @@ namespace SmirnovApp.ViewModels.PagesViewModels
                 ("ClientPhone", SelectedContract.Estate.Owner.Phone),
             };
 
+            //Заменяем параметры в документе на значения.
             replaces.ForEach(x => document.ReplaceText(x.From, x.To));
 
             using (var fileStream = new FileStream(fileName, FileMode.Create))
