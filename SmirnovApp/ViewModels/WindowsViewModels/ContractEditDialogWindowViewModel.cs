@@ -43,7 +43,7 @@ namespace SmirnovApp.ViewModels.WindowsViewModels
 
         private void Initialize(Contract contract)
         {
-            Statuses = Enum.GetValues<ContractStatus>().ToList();
+            Statuses = Enum.GetValues(typeof(ContractStatus)).Cast<ContractStatus>().ToList();
 
             using var db = new AppDbContext();
 

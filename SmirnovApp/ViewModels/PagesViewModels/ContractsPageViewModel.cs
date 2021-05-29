@@ -219,7 +219,7 @@ namespace SmirnovApp.ViewModels.PagesViewModels
             };
             var paragraph = document.CreateParagraph();
             var titleRun = paragraph.CreateRun();
-            titleRun.SetText($"Отчёт по договорам {DateTime.Now:dd.MM.yyyy}");
+            titleRun.SetText($"Учёт клиентов за {DateTime.Now:dd.MM.yyyy}");
             titleRun.FontSize = 18;
 
             var titles = new List<string>
